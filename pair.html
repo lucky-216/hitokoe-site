@@ -53,10 +53,15 @@
 <script>
   // The identity rides the #fragment — browsers never send it to the host,
   // so this page stays a dumb sign-post: no log ever contains who met whom.
-  // The code rides the #fragment — never sent to the host.
-  var m = location.hash.match(/^#c=([A-Za-z0-9]+)/);
-  var c = m ? m[1] : '';
-  var target = c ? 'hitokoe://pair?c=' + encodeURIComponent(c) : 'hitokoe://';
+  // The code AND the envelope key ride the #fragment — never sent to the
+  // host; the mailbox server only ever sees ciphertext.
+  var h = new URLSearchParams(location.hash.replace(/^#/, ''));
+  var c = h.get('c') || '';
+  var k = h.get('k') || '';
+  var target = c
+    ? 'hitokoe://pair?c=' + encodeURIComponent(c) +
+      (k ? '&k=' + encodeURIComponent(k) : '')
+    : 'hitokoe://';
   document.getElementById('open').href = target;
   setTimeout(function () { location.href = target; }, 350);
 </script>
