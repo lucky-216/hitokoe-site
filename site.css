@@ -1,0 +1,255 @@
+/* hitokoe.app — the page is the small phone's body: kraft, a frame sunk
+   into it, cream glass to read on, ink, and one light in shu. The type is
+   the phone's own: Handjet for what the machine says, M PLUS Rounded 1c
+   for reading (lib/theme.dart). */
+
+@font-face {
+  font-family: 'Handjet';
+  src: url('type/Handjet-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Handjet';
+  src: url('type/Handjet-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'M PLUS Rounded 1c';
+  src: url('type/MPLUSRounded1c-Regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'M PLUS Rounded 1c';
+  src: url('type/MPLUSRounded1c-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --kraft: #E3D6BA;
+  --frame: #D6C7A3;
+  --glass: #F7F0DD;
+  --ink: #211A0E;
+  --ink-2: #453B26;
+  --quiet: #5C5140;
+  --shu: #A8332C;
+  --machine: 'Handjet', 'M PLUS Rounded 1c', sans-serif;
+  --read: 'M PLUS Rounded 1c', -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--kraft);
+  color: var(--ink-2);
+  font: 400 17px/1.7 var(--read);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+/* A shot waits for its language (lang.js); its box is kept meanwhile. */
+img:not([src]) { visibility: hidden; }
+.iphone .screen img.still { position: absolute; inset: 0; }
+a { color: var(--ink); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--shu); }
+:focus-visible { outline: 2px solid var(--shu); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* One language at a time; <html data-lang> is set before the page paints. */
+html[data-lang="en"] [data-l="vi"],
+html[data-lang="vi"] [data-l="en"] { display: none !important; }
+
+/* ── the bar ─────────────────────────────────────────────────────────── */
+.bar { padding: 22px 0 0; }
+.bar-in { display: flex; align-items: center; gap: 16px; }
+.mark {
+  display: inline-flex; align-items: center; gap: 12px;
+  text-decoration: none; color: var(--ink);
+  font: 700 26px/1 var(--machine); letter-spacing: .02em;
+}
+.mark img { width: 34px; height: 34px; border-radius: 50%; }
+.bar .spacer { flex: 1; }
+.langs { display: flex; gap: 4px; }
+.langs button {
+  appearance: none; border: 0; background: none; cursor: pointer;
+  font: 600 20px/1 var(--machine); letter-spacing: .06em;
+  color: var(--quiet); padding: 8px 8px 6px;
+  border-bottom: 2px solid transparent;
+}
+.langs button[aria-pressed="true"] { color: var(--shu); border-bottom-color: var(--shu); }
+.langs button:hover { color: var(--ink); }
+
+/* ── the phone: an iPhone holding the small phone ────────────────────── */
+.iphone {
+  position: relative;
+  padding: 2.6%;
+  background: #1D1913;
+  border-radius: 15.5% / 7.2%;
+  box-shadow:
+    0 34px 60px -30px rgba(33, 26, 14, .6),
+    inset 0 0 0 1.5px rgba(255, 250, 236, .08);
+}
+.iphone .screen {
+  position: relative; overflow: hidden;
+  border-radius: 13.2% / 6.1%;
+  background: var(--kraft);
+}
+.iphone .screen img { width: 100%; }
+.iphone .island {
+  position: absolute; top: 1.6%; left: 38.25%;
+  width: 23.5%; height: 4.15%;
+  background: #000; border-radius: 999px;
+}
+
+/* ── the first screen ────────────────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+  grid-template-areas: "copy demo" "readout demo";
+  grid-template-rows: auto 1fr;
+  column-gap: 80px; row-gap: 36px;
+  padding-top: 40px; padding-bottom: 72px;
+}
+.hero-copy { grid-area: copy; align-self: end; }
+.demo { grid-area: demo; align-self: center; }
+.readout {
+  grid-area: readout; align-self: start;
+  max-width: 30em; padding-top: 26px;
+  border-top: 1px solid var(--frame);
+}
+h1 {
+  margin: 0;
+  font: 700 clamp(48px, 6.6vw, 86px)/.94 var(--machine);
+  letter-spacing: .005em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+html[data-lang="vi"] h1 { font-size: clamp(44px, 5.6vw, 72px); line-height: .98; }
+.lead { font-size: 20px; line-height: 1.6; max-width: 29em; margin: 26px 0 0; }
+.get { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin: 34px 0 0; }
+.store {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--ink); color: #F7F0DD; text-decoration: none;
+  padding: 10px 18px 10px 14px; border-radius: 12px;
+  font-family: -apple-system, 'Segoe UI', sans-serif;
+}
+.store:hover { color: #fff; background: #000; }
+.store svg { width: 24px; height: 24px; flex: none; }
+.store span { display: flex; flex-direction: column; line-height: 1.1; }
+.store small { font-size: 11px; letter-spacing: .02em; opacity: .8; }
+.store b { font-size: 19px; font-weight: 600; letter-spacing: -.01em; }
+.get .note { color: var(--quiet); font-size: 15px; }
+
+.demo .iphone { width: min(340px, 100%); margin: 0 auto; }
+.demo .iphone:focus-visible { outline-offset: 6px; border-radius: 15.5% / 7.2%; }
+.key {
+  position: absolute; appearance: none; border: 0; padding: 0; margin: 0;
+  background: none; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  -webkit-touch-callout: none; user-select: none;
+}
+.key:focus-visible { outline-offset: -2px; }
+.key.down { background: radial-gradient(closest-side, rgba(33, 26, 14, .14), rgba(33, 26, 14, .14) 70%, transparent 72%); }
+/* The cross as drawn on the glass, in shares of the shot (804 × 1748). */
+.k-up    { left: 41.3%; width: 17.4%; top: 70.4%; height: 7.4%; }
+.k-down  { left: 41.3%; width: 17.4%; top: 86.8%; height: 7.4%; }
+.k-left  { left: 24.1%; width: 16.4%; top: 78.2%; height: 8.2%; }
+.k-right { left: 59.5%; width: 16.4%; top: 78.2%; height: 8.2%; }
+.k-ok    { left: 40.3%; width: 19.4%; top: 77.8%; height: 8.9%; border-radius: 50%; }
+
+.lit { margin: 0; min-height: 3.4em; }
+.lit b {
+  display: block; color: var(--shu);
+  font: 700 26px/1.1 var(--machine); letter-spacing: .02em;
+}
+.lit span { display: block; margin-top: 6px; font-size: 16px; line-height: 1.55; }
+.how { margin: 14px 0 0; font-size: 14.5px; color: var(--quiet); }
+kbd {
+  display: inline-block; min-width: 1.8em; padding: 1px 6px;
+  border-radius: 6px; background: var(--glass);
+  box-shadow: inset 0 -2px 0 var(--frame), 0 0 0 1px var(--frame);
+  font: 600 14px/1.5 var(--machine); color: var(--ink); text-align: center;
+}
+
+/* ── the parts ───────────────────────────────────────────────────────── */
+.part {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 56px; align-items: start;
+  padding-top: 72px; padding-bottom: 72px;
+  border-top: 1px solid var(--frame);
+}
+h2 {
+  margin: 0; color: var(--ink);
+  font: 700 clamp(34px, 3.8vw, 48px)/1 var(--machine);
+  letter-spacing: .01em; text-wrap: balance;
+}
+.part p { margin: 22px 0 0; max-width: 32em; }
+.phones { list-style: none; margin: 0; padding: 0; display: flex; gap: 24px; }
+.phones li { flex: 1 1 0; min-width: 0; max-width: 220px; }
+.phones figure { margin: 0; }
+.phones .iphone { padding: 2.8%; }
+.phones figcaption { margin-top: 16px; font-size: 15px; line-height: 1.5; }
+.phones figcaption b {
+  display: block; color: var(--ink);
+  font: 700 22px/1.1 var(--machine); letter-spacing: .02em; margin-bottom: 4px;
+}
+
+/* ── what stays on the phone ─────────────────────────────────────────── */
+.privacy { padding-top: 24px; padding-bottom: 88px; }
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--frame);
+  border-radius: 16px;
+  box-shadow: inset 0 2px 10px rgba(110, 98, 72, .16);
+  padding: 44px 48px;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px;
+}
+.glass p { margin: 0 0 14px; max-width: 34em; }
+.glass p:last-child { margin-bottom: 0; }
+
+/* ── the foot ────────────────────────────────────────────────────────── */
+.foot { border-top: 1px solid var(--frame); padding: 40px 0 56px; }
+.foot-in { display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: center; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.foot nav a {
+  font: 600 20px/1.2 var(--machine); letter-spacing: .03em;
+  text-decoration: none; color: var(--ink-2);
+}
+.foot nav a:hover { color: var(--shu); }
+.foot .spacer { flex: 1; }
+.foot small { color: var(--quiet); font-size: 14px; }
+
+/* ── Help ────────────────────────────────────────────────────────────── */
+.page { max-width: 760px; padding-top: 48px; padding-bottom: 72px; }
+.page h1 { font-size: clamp(44px, 6vw, 64px); }
+.page .intro { font-size: 19px; margin: 18px 0 40px; max-width: 32em; }
+.qa { border-top: 1px solid var(--frame); padding: 26px 0 8px; }
+.qa h2 { font-size: 30px; }
+.qa p { margin: 12px 0 18px; max-width: 36em; }
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-areas: "copy" "demo" "readout";
+    grid-template-rows: auto;
+    row-gap: 40px; padding-top: 32px; padding-bottom: 48px;
+  }
+  .demo .iphone { width: min(330px, 82vw); }
+  .readout { width: min(330px, 82vw); margin: -12px auto 0; padding-top: 0; border-top: 0; }
+  .part { grid-template-columns: 1fr; gap: 32px; padding-top: 56px; padding-bottom: 56px; }
+  .phones {
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 -24px; padding: 4px 24px 12px; scrollbar-width: none;
+  }
+  .phones::-webkit-scrollbar { display: none; }
+  .phones li { flex: 0 0 58vw; max-width: 240px; scroll-snap-align: start; }
+  .glass { grid-template-columns: 1fr; gap: 20px; padding: 32px 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}

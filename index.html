@@ -1,275 +1,201 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-lang="en"
+  data-title-en="Hitokoe — a small phone inside your phone"
+  data-title-vi="Hitokoe — chiếc điện thoại nhỏ trong điện thoại của bạn">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hitokoe — nobody stays a stranger</title>
-<meta name="description" content="The offline social notebook. People enter it only one way: you meet in real life and connect, phones in hand. No account, no cloud.">
-<meta property="og:title" content="Hitokoe — nobody stays a stranger">
-<meta property="og:description" content="The offline social notebook for people who actually meet.">
+<title>Hitokoe — a small phone inside your phone</title>
+<meta name="description" content="Six games you play one move at a time, a camera, a pager and a walkie-talkie — and the people you’ve met. All on five keys. Free on iPhone.">
+<meta property="og:title" content="Hitokoe — a small phone inside your phone">
+<meta property="og:description" content="Six games, a camera, a pager, a walkie-talkie and the people you’ve met — all on five keys.">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#F1E9D7; --ink:#211A0E; --sub:#5A4E37; --faint:#A29574;
-    --shu:#A8332C; --shu-soft:rgba(168,51,44,.10);
-    --card:#FFFCF3; --line:#E7DCC4; --line2:#D8CBAE;
-    --jp:'Klee One',serif; --sans:'Be Vietnam Pro',-apple-system,'Segoe UI',Roboto,sans-serif;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:var(--sans); line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    background-image:radial-gradient(circle at 1px 1px, rgba(110,98,72,.05) 1px, transparent 0);
-    background-size:22px 22px;
-  }
-  a{color:inherit}
-  .wrap{max-width:1080px; margin:0 auto; padding:0 24px}
-  .serif{font-family:var(--jp)}
-
-  /* ---- nav ---- */
-  nav{position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
-      background:rgba(241,233,215,.82); border-bottom:1px solid rgba(216,203,174,.5)}
-  nav .wrap{display:flex; align-items:center; height:62px}
-  .brand{display:flex; align-items:center; gap:11px; text-decoration:none}
-  .mark{width:34px; height:34px; border-radius:50%; background:var(--ink);
-        display:flex; align-items:center; justify-content:center; flex:0 0 auto}
-  .brand .jp{font-family:var(--jp); font-size:20px; letter-spacing:3px; color:var(--ink)}
-  nav .spacer{flex:1}
-  nav a.lnk{font-size:14px; font-weight:500; color:var(--sub); text-decoration:none; margin-left:22px}
-  nav a.lnk:hover{color:var(--shu)}
-
-  /* ---- hero ---- */
-  header{padding:76px 0 40px}
-  .hero{display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center}
-  .kicker{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700;
-          letter-spacing:1.5px; text-transform:uppercase; color:var(--shu);
-          background:var(--shu-soft); padding:6px 13px; border-radius:999px}
-  .kicker .dot{width:6px; height:6px; border-radius:50%; background:var(--shu)}
-  h1{font-family:var(--jp); font-weight:600; font-size:52px; line-height:1.08;
-     margin:20px 0 0; letter-spacing:-.5px}
-  .lead{font-size:18px; color:var(--sub); margin:20px 0 0; max-width:30em}
-  .cta{display:flex; align-items:center; gap:16px; margin-top:30px; flex-wrap:wrap}
-  .badge{display:inline-flex; align-items:center; gap:11px; background:var(--ink); color:#F7F0DD;
-         padding:12px 20px; border-radius:14px; text-decoration:none; box-shadow:0 6px 20px rgba(33,26,14,.22)}
-  .badge:hover{transform:translateY(-1px)} .badge{transition:transform .15s}
-  .badge .lbl{display:flex; flex-direction:column; line-height:1.15}
-  .badge .lbl small{font-size:10px; opacity:.72; letter-spacing:.3px}
-  .badge .lbl b{font-size:16px; font-weight:600}
-  .cta .note{font-size:13px; color:var(--faint)}
-
-  /* ---- phone mockup ---- */
-  .device-wrap{display:flex; justify-content:center; position:relative}
-  .device-wrap .seal{position:absolute; z-index:0; width:180px; height:180px; right:2%; top:-6%;
-    background:radial-gradient(circle at 50% 50%, rgba(168,51,44,.14), transparent 68%); filter:blur(6px)}
-  .device{position:relative; z-index:1; width:270px; aspect-ratio:1320/2868; background:#0B0906;
-    border-radius:42px; padding:9px; box-shadow:0 30px 70px -18px rgba(33,26,14,.55), 0 0 0 2px rgba(0,0,0,.35)}
-  .device .screen{width:100%; height:100%; border-radius:34px; overflow:hidden; background:#14100A}
-  .device .screen img{width:100%; height:100%; object-fit:cover; display:block}
-  .device .island{position:absolute; top:20px; left:50%; transform:translateX(-50%);
-    width:82px; height:23px; background:#0B0906; border-radius:14px; z-index:2}
-
-  /* ---- verbs strip ---- */
-  .verbs{margin:64px 0 8px; border-top:1px solid var(--line2); border-bottom:1px solid var(--line2)}
-  .verbs .row{display:flex; justify-content:space-between; align-items:center; gap:8px;
-    padding:26px 0; flex-wrap:wrap}
-  .verb{display:flex; align-items:center; gap:12px; flex:1; min-width:150px; justify-content:center}
-  .verb .ic{width:34px; height:34px; color:var(--shu); flex:0 0 auto}
-  .verb b{font-family:var(--jp); font-size:20px; font-weight:600}
-  .verb .arrow{color:var(--faint)}
-
-  /* ---- features ---- */
-  section.feat{padding:56px 0}
-  .feat .grid{display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:center}
-  .feat.rev .grid{direction:rtl} .feat.rev .grid > *{direction:ltr}
-  .feat .tag{font-size:12.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--shu)}
-  .feat h2{font-family:var(--jp); font-weight:600; font-size:33px; line-height:1.15; margin:12px 0 0}
-  .feat p{font-size:16.5px; color:var(--sub); margin:16px 0 0}
-  .feat .shot{display:flex; justify-content:center}
-  .feat .device{width:240px}
-
-  /* ---- privacy band ---- */
-  .band{background:var(--ink); color:#F3EBD9; margin-top:32px}
-  .band .wrap{padding:70px 24px; text-align:center}
-  .band .jp{font-family:var(--jp); font-size:34px; color:#F7F0DD; margin:0 0 14px}
-  .band p{font-size:17px; color:rgba(243,235,217,.8); max-width:36em; margin:0 auto}
-  .band .pills{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:26px}
-  .band .pill{border:1px solid rgba(247,240,221,.28); border-radius:999px; padding:8px 16px;
-    font-size:13.5px; color:#F7F0DD}
-
-  /* ---- footer ---- */
-  footer{padding:52px 0 60px}
-  footer .top{display:flex; align-items:center; gap:11px; margin-bottom:18px}
-  footer .cols{display:flex; gap:40px; flex-wrap:wrap; align-items:baseline}
-  footer a{color:var(--sub); text-decoration:none; font-size:14.5px}
-  footer a:hover{color:var(--shu)}
-  footer .copy{color:var(--faint); font-size:12.5px; margin-top:26px}
-
-  @media (max-width:820px){
-    h1{font-size:40px}
-    .hero{grid-template-columns:1fr; gap:36px; text-align:center}
-    .hero .copy{order:1} .device-wrap{order:0}
-    .kicker,.cta{justify-content:center}
-    .lead{margin-left:auto; margin-right:auto}
-    .feat .grid{grid-template-columns:1fr; gap:30px; text-align:center}
-    .feat.rev .grid{direction:ltr}
-    .verbs .row{gap:14px} .verb .arrow{display:none}
-  }
-</style>
+<meta property="og:url" content="https://hitokoe.app/">
+<meta property="og:image" content="https://hitokoe.app/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#E3D6BA">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="type/Handjet-Bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="site.css">
+<script>
+  // The page's language before it paints: ?lang=, then the one picked last,
+  // then the browser's.
+  (function () {
+    var l;
+    try { l = localStorage.getItem('lang'); } catch (e) {}
+    var q = new URLSearchParams(location.search).get('lang');
+    if (q === 'en' || q === 'vi') l = q;
+    if (l !== 'en' && l !== 'vi') {
+      var ls = navigator.languages || [navigator.language || ''];
+      l = ls.some(function (x) { return /^vi\b/i.test(x); }) ? 'vi' : 'en';
+    }
+    document.documentElement.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+  })();
+</script>
+<script src="lang.js" defer></script>
+<script src="phone.js" defer></script>
 </head>
 <body>
 
-<nav>
-  <div class="wrap">
-    <a class="brand" href="#top">
-      <span class="mark">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F7F0DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
-      </span>
-      <span class="jp">ひとこえ</span>
-    </a>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="mark" href="./"><img src="img/icon-64.png" alt="" width="34" height="34">Hitokoe</a>
     <span class="spacer"></span>
-    <a class="lnk" href="#how">How it works</a>
-    <a class="lnk" href="privacy.html">Privacy</a>
-  </div>
-</nav>
-
-<div id="top"></div>
-<header>
-  <div class="wrap hero">
-    <div class="copy">
-      <span class="kicker"><span class="dot"></span>Offline · no account · no cloud</span>
-      <h1>Nobody stays<br>a stranger.</h1>
-      <p class="lead">Hitokoe is a private notebook of the people you actually meet.
-        Someone enters it only one way — you meet in real life. One door for strangers, one shake for friends. No requests left hanging.</p>
-      <div class="cta">
-        <a class="badge" href="https://apps.apple.com/app/id6773432306" target="_blank" rel="noopener">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#F7F0DD"><path d="M17.05 12.04c-.03-2.7 2.2-4 2.3-4.06-1.25-1.84-3.2-2.1-3.9-2.12-1.66-.17-3.24.97-4.08.97-.84 0-2.14-.95-3.52-.92-1.8.03-3.47 1.05-4.4 2.66-1.88 3.26-.48 8.08 1.35 10.72.9 1.3 1.96 2.75 3.35 2.7 1.35-.06 1.86-.87 3.49-.87 1.62 0 2.08.87 3.5.84 1.44-.02 2.36-1.32 3.24-2.62 1.02-1.5 1.44-2.96 1.46-3.03-.03-.02-2.8-1.08-2.83-4.27M14.4 4.1c.74-.9 1.24-2.15 1.1-3.4-1.07.05-2.36.72-3.12 1.62-.68.79-1.28 2.06-1.12 3.27 1.19.1 2.4-.6 3.14-1.49"/></svg>
-          <span class="lbl"><small>Download on the</small><b>App&nbsp;Store</b></span>
-        </a>
-        <span class="note">Free · iPhone</span>
-      </div>
-    </div>
-    <div class="device-wrap">
-      <div class="seal"></div>
-      <div class="device">
-        <div class="island"></div>
-        <div class="screen"><img src="shots/home_live.jpg" alt="Hitokoe home — happening now" loading="eager"></div>
-      </div>
-    </div>
+    <nav class="langs" aria-label="Language · Ngôn ngữ">
+      <button type="button" data-set="en" aria-pressed="true" lang="en">EN</button>
+      <button type="button" data-set="vi" aria-pressed="false" lang="vi">VI</button>
+    </nav>
   </div>
 </header>
 
-<div class="wrap verbs" id="how">
-  <div class="row">
-    <div class="verb">
-      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c.7-3.6 3.6-6 8-6s7.3 2.4 8 6"/></svg>
-      <b>Meet</b>
+<main>
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <h1>
+        <span data-l="en">A small phone inside your phone.</span>
+        <span data-l="vi">Một chiếc điện thoại nhỏ trong điện thoại của bạn.</span>
+      </h1>
+      <p class="lead">
+        <span data-l="en">Six games you play one move at a time, a camera, a pager and a walkie-talkie — and the people you’ve met. All on five keys.</span>
+        <span data-l="vi">Sáu trò chơi đi từng nước, máy ảnh, máy nhắn tin, bộ đàm — và những người bạn đã gặp. Tất cả trên năm phím.</span>
+      </p>
+      <p class="get">
+        <a class="store" href="https://apps.apple.com/app/id6773432306" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.7 2.2-4 2.3-4.06-1.25-1.84-3.2-2.1-3.9-2.12-1.66-.17-3.24.97-4.08.97-.84 0-2.14-.95-3.52-.92-1.8.03-3.47 1.05-4.4 2.66-1.88 3.26-.48 8.08 1.35 10.72.9 1.3 1.96 2.75 3.35 2.7 1.35-.06 1.86-.87 3.49-.87 1.62 0 2.08.87 3.5.84 1.44-.02 2.36-1.32 3.24-2.62 1.02-1.5 1.44-2.96 1.46-3.03-.03-.02-2.8-1.08-2.83-4.27M14.4 4.1c.74-.9 1.24-2.15 1.1-3.4-1.07.05-2.36.72-3.12 1.62-.68.79-1.28 2.06-1.12 3.27 1.19.1 2.4-.6 3.14-1.49"/></svg>
+          <span><small data-l="en">Download on the</small><small data-l="vi">Tải về trên</small><b>App Store</b></span>
+        </a>
+        <span class="note"><span data-l="en">Free on iPhone</span><span data-l="vi">Miễn phí trên iPhone</span></span>
+      </p>
     </div>
-    <span class="arrow">→</span>
-    <div class="verb">
-      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="7" height="12" rx="2"/><rect x="14" y="6" width="7" height="12" rx="2"/><path d="M10 12h4"/></svg>
-      <b>Connect</b>
-    </div>
-    <span class="arrow">→</span>
-    <div class="verb">
-      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-      <b>Leave a moment</b>
-    </div>
-    <span class="arrow">→</span>
-    <div class="verb">
-      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
-      <b>Meet again</b>
-    </div>
-  </div>
-</div>
 
-<section class="feat">
-  <div class="wrap grid">
+    <div class="demo">
+      <div class="iphone" id="phone" tabindex="0" role="group" aria-describedby="readout"
+        aria-label="Hitokoe — try it: arrow keys move, Enter opens, Escape goes back">
+        <div class="screen">
+          <img id="glass" width="804" height="1748" alt="Hitokoe’s Home, Games lit" fetchpriority="high">
+          <script>document.getElementById('glass').src = 'shots/' + document.documentElement.getAttribute('data-lang') + '/home-4.webp';</script>
+          <noscript><img class="still" src="shots/en/home-4.webp" width="804" height="1748" alt="Hitokoe’s Home, Games lit"></noscript>
+          <span class="island" aria-hidden="true"></span>
+          <button type="button" class="key k-up" data-key="up" tabindex="-1" aria-label="▲"></button>
+          <button type="button" class="key k-left" data-key="left" tabindex="-1" aria-label="◀"></button>
+          <button type="button" class="key k-ok" data-key="ok" tabindex="-1" aria-label="ひ"></button>
+          <button type="button" class="key k-right" data-key="right" tabindex="-1" aria-label="▶"></button>
+          <button type="button" class="key k-down" data-key="down" tabindex="-1" aria-label="▼"></button>
+        </div>
+      </div>
+    </div>
+    <div class="readout" id="readout">
+      <p class="lit" aria-live="polite"><b id="lit-name">Games</b><span id="lit-line">Six games. Nothing moves until you do.</span></p>
+      <p class="how">
+        <span data-l="en">Try it: <kbd>▲</kbd> <kbd>▼</kbd> <kbd>◀</kbd> <kbd>▶</kbd> to move, <kbd>ひ</kbd> to open, hold <kbd>◀</kbd> to go back.</span>
+        <span data-l="vi">Bấm thử: <kbd>▲</kbd> <kbd>▼</kbd> <kbd>◀</kbd> <kbd>▶</kbd> để chọn, <kbd>ひ</kbd> để mở, giữ <kbd>◀</kbd> để quay lại.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="part wrap" aria-labelledby="games">
     <div>
-      <span class="tag">Meet someone new</span>
-      <h2>One door. Two people.</h2>
-      <p>Show your code, they scan it — then they knock, and you say hello back. Both of you are present, so the answer comes now. No friend requests left soaking for weeks.</p>
+      <h2 id="games">
+        <span data-l="en">Six games, one move at a time.</span>
+        <span data-l="vi">Sáu trò chơi, từng nước một.</span>
+      </h2>
+      <p>
+        <span data-l="en">Snake, Slide, Sides, Dial, Mines and Pixel. Each has its own move on the keys, and nothing happens until you press one. Finish a game for 10 coins, once a day for each; beat your best for 20 — and that run is taped, to watch again in the Album.</span>
+        <span data-l="vi">Snake, Slide, Sides, Dial, Mines và Pixel. Mỗi trò một cách bấm riêng, và bạn chưa bấm thì chưa có gì xảy ra. Chơi xong một trò được 10 xu, mỗi trò một lần mỗi ngày; phá PB được 20 xu — và ván đó được quay lại để xem trong Album.</span>
+      </p>
     </div>
-    <div class="shot"><div class="device"><div class="island"></div><div class="screen"><img src="shots/knock.jpg" alt="The knock — someone asks to meet you" loading="lazy"></div></div></div>
-  </div>
-</section>
+    <ul class="phones">
+      <li><figure>
+        <div class="iphone"><div class="screen"><img data-shot="snake" width="804" height="1748" loading="lazy" alt="Snake, mid-game" data-alt-en="Snake, mid-game" data-alt-vi="Snake, đang chơi"><span class="island" aria-hidden="true"></span></div></div>
+        <figcaption><b>Snake</b><span data-l="en">Eat the dot on exactly the tenth step.</span><span data-l="vi">Ăn chấm đúng ở bước thứ mười.</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="iphone"><div class="screen"><img data-shot="mines" width="804" height="1748" loading="lazy" alt="Mines: the cat on a minefield, the bot’s turn" data-alt-en="Mines: the cat on a minefield, the bot’s turn" data-alt-vi="Mines: chú mèo trên bãi mìn, tới lượt máy"><span class="island" aria-hidden="true"></span></div></div>
+        <figcaption><b>Mines</b><span data-l="en">Lead a cat across a minefield, against the bot.</span><span data-l="vi">Dắt mèo qua bãi mìn, đấu với máy.</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="iphone"><div class="screen"><img data-shot="dial" width="804" height="1748" loading="lazy" alt="Dial: a safe’s rings of coloured lamps" data-alt-en="Dial: a safe’s rings of coloured lamps" data-alt-vi="Dial: các vòng đèn màu của két sắt"><span class="island" aria-hidden="true"></span></div></div>
+        <figcaption><b>Dial</b><span data-l="en">Three safes, one hidden code.</span><span data-l="vi">Ba két sắt, một mã bí mật.</span></figcaption>
+      </figure></li>
+    </ul>
+  </section>
 
-<section class="feat rev">
-  <div class="wrap grid">
+  <section class="part wrap" aria-labelledby="bank">
     <div>
-      <span class="tag">Meet again</span>
-      <h2>Shake together to connect.</h2>
-      <p>Open each other's page, then shake — two hands, one moment, no buttons. The Pulse warms as you close in, and on newer iPhones precision finding points the way.</p>
+      <h2 id="bank">
+        <span data-l="en">Play for coins, then buy the rest of the phone.</span>
+        <span data-l="vi">Chơi lấy xu, rồi mua phần còn lại của chiếc máy.</span>
+      </h2>
+      <p>
+        <span data-l="en">Coins come from playing and from reading the Board — they can’t be bought. The Bank writes down every one and keeps your savings, which grow a little each day you come back. Its Shop sells the Camera, the Pager and the Walkie-talkie.</span>
+        <span data-l="vi">Xu đến từ việc chơi và đọc Board — không mua được. Ngân hàng ghi lại từng đồng và giữ tiền tiết kiệm của bạn, mỗi ngày quay lại lớn thêm một chút. Cửa hàng của nó bán Máy ảnh, Máy nhắn tin và Bộ đàm.</span>
+      </p>
     </div>
-    <div class="shot"><div class="device"><div class="island"></div><div class="screen"><img src="shots/shake_meet.jpg" alt="Meet — shake together to connect" loading="lazy"></div></div></div>
-  </div>
-</section>
+    <ul class="phones">
+      <li><figure>
+        <div class="iphone"><div class="screen"><img data-shot="savings" width="804" height="1748" loading="lazy" alt="The Bank: 800 coins in savings, three days in a row" data-alt-en="The Bank: 800 coins in savings, three days in a row" data-alt-vi="Ngân hàng: 800 xu tiết kiệm, ba ngày liên tiếp"><span class="island" aria-hidden="true"></span></div></div>
+        <figcaption><b><span data-l="en">Savings</span><span data-l="vi">Tiết kiệm</span></b><span data-l="en">Come back each day and the interest grows.</span><span data-l="vi">Ngày nào cũng quay lại thì lãi lớn dần.</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="iphone"><div class="screen"><img data-shot="shop" width="804" height="1748" loading="lazy" alt="The Shop inside the Bank" data-alt-en="The Shop inside the Bank" data-alt-vi="Cửa hàng trong Ngân hàng"><span class="island" aria-hidden="true"></span></div></div>
+        <figcaption><b><span data-l="en">Shop</span><span data-l="vi">Cửa hàng</span></b><span data-l="en">Apps for coins, and a few jokes.</span><span data-l="vi">App mua bằng xu, và vài món đùa.</span></figcaption>
+      </figure></li>
+    </ul>
+  </section>
 
-<section class="feat">
-  <div class="wrap grid">
+  <section class="part wrap" aria-labelledby="people">
     <div>
-      <span class="tag">Moments</span>
-      <h2>Every meeting, a new chapter.</h2>
-      <p>A few seconds of face and voice — captured only when you're actually together. Games and side-by-side "Together" clips land in both notebooks. Years later, watch a half-forgotten friend grow up across your meetings, voice and all.</p>
+      <h2 id="people">
+        <span data-l="en">Only the people you’ve met.</span>
+        <span data-l="vi">Chỉ những người bạn đã gặp.</span>
+      </h2>
+      <p>
+        <span data-l="en">Add someone by showing your code for their Camera to scan. There are no names or profiles: everyone is a five-digit number and a face, stitched by hand or by chance. Letters on the Pager are sealed on your phone and opened only on theirs.</span>
+        <span data-l="vi">Thêm người bằng cách đưa mã của bạn cho Máy ảnh của họ quét. Không tên, không hồ sơ: mỗi người là một số năm chữ số và một gương mặt, thêu tay hoặc thêu ngẫu nhiên. Thư trên Máy nhắn tin được niêm phong ngay trên máy bạn và chỉ mở được trên máy họ.</span>
+      </p>
     </div>
-    <div class="shot"><div class="device"><div class="island"></div><div class="screen"><img src="shots/thread.jpg" alt="A notebook thread — moments across meetings" loading="lazy"></div></div></div>
-  </div>
-</section>
+    <ul class="phones">
+      <li><figure>
+        <div class="iphone"><div class="screen"><img data-shot="add" width="804" height="1748" loading="lazy" alt="Add someone: your code to scan" data-alt-en="Add someone: your code to scan" data-alt-vi="Thêm người: mã của bạn để quét"><span class="island" aria-hidden="true"></span></div></div>
+        <figcaption><b><span data-l="en">Add someone</span><span data-l="vi">Thêm người</span></b><span data-l="en">One shows a code, the other scans it.</span><span data-l="vi">Một người đưa mã, người kia quét.</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="iphone"><div class="screen"><img data-shot="letter" width="804" height="1748" loading="lazy" alt="A letter on the Pager: a bowl, a clock and a question mark" data-alt-en="A letter on the Pager: a bowl, a clock and a question mark" data-alt-vi="Một lá thư trên Máy nhắn tin: bát mì, đồng hồ và dấu hỏi"><span class="island" aria-hidden="true"></span></div></div>
+        <figcaption><b><span data-l="en">Pager</span><span data-l="vi">Máy nhắn tin</span></b><span data-l="en">Three little pictures say a lot.</span><span data-l="vi">Ba hình nhỏ nói được nhiều điều.</span></figcaption>
+      </figure></li>
+    </ul>
+  </section>
 
-<section class="feat rev">
-  <div class="wrap grid">
-    <div>
-      <span class="tag">Study together</span>
-      <h2>One clock, and a whisper.</h2>
-      <p>Sit down to a shared session — one timer on both phones. Earphones in, hold the mic and it's a tiny walkie-talkie: your voice lands in their ear, let go and the channel is theirs. Miss them between meetings? Say it with a card.</p>
+  <section class="privacy wrap" aria-labelledby="privacy">
+    <div class="glass">
+      <h2 id="privacy">
+        <span data-l="en">What you make stays on your phone.</span>
+        <span data-l="vi">Những gì bạn làm ra ở lại trên máy bạn.</span>
+      </h2>
+      <div>
+        <p>
+          <span data-l="en">No account, no analytics, no tracking. Our small server only carries what two phones send each other — the card you swap when you add someone, and letters — sealed so we can’t read either. The Board comes down the same for everyone.</span>
+          <span data-l="vi">Không tài khoản, không phân tích, không theo dõi. Máy chủ nhỏ của chúng tôi chỉ chuyển những gì hai máy gửi cho nhau — thẻ khi thêm người, và thư — đã niêm phong nên chúng tôi không đọc được. Board thì ai tải về cũng như nhau.</span>
+        </p>
+        <p><a href="privacy.html"><span data-l="en">Read the privacy policy</span><span data-l="vi">Đọc chính sách quyền riêng tư</span></a></p>
+      </div>
     </div>
-    <div class="shot"><div class="device"><div class="island"></div><div class="screen"><img src="shots/whisper.jpg" alt="Study session — the whisper channel is open" loading="lazy"></div></div></div>
-  </div>
-</section>
+  </section>
+</main>
 
-<section class="feat">
-  <div class="wrap grid">
-    <div>
-      <span class="tag">Learn it as a story</span>
-      <h2>How Lucky met Maya.</h2>
-      <p>No walls of instructions — a hand-drawn comic teaches the whole thing. A month ago they were strangers; then one hello, and a notebook that grows every time they meet again.</p>
-    </div>
-    <div class="shot"><div class="device"><div class="island"></div><div class="screen"><img src="shots/07_comic_together.jpg" alt="The how-it-works comic — Lucky and Maya" loading="lazy"></div></div></div>
-  </div>
-</section>
-
-<div class="band">
-  <div class="wrap">
-    <div class="jp">Private by design</div>
-    <p>Everything lives on your two phones. No account, no cloud, no analytics. Turn the internet off — Hitokoe still works. Back it up to a file whenever you like.</p>
-    <div class="pills">
-      <span class="pill">No account</span>
-      <span class="pill">No cloud</span>
-      <span class="pill">No tracking</span>
-      <span class="pill">Works offline</span>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <div class="wrap">
-    <div class="top">
-      <span class="mark">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F7F0DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
-      </span>
-      <span class="jp" style="font-family:var(--jp); font-size:20px; letter-spacing:3px">ひとこえ · Hitokoe</span>
-    </div>
-    <div class="cols">
-      <a href="privacy.html">Privacy policy</a>
-      <a href="support.html">Help</a>
-      <a href="mailto:clgslsm@gmail.com">Contact</a>
-      <a href="https://instagram.com/hito.koe" target="_blank" rel="noopener">@hito.koe</a>
-    </div>
-    <div class="copy">ひとこえ — "one voice". The offline social network for people who actually meet.<br>© 2026 Lam Tran</div>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a class="mark" href="./"><img src="img/icon-64.png" alt="" width="34" height="34">Hitokoe</a>
+    <nav aria-label="Hitokoe">
+      <a href="support.html"><span data-l="en">Help</span><span data-l="vi">Trợ giúp</span></a>
+      <a href="privacy.html"><span data-l="en">Privacy</span><span data-l="vi">Quyền riêng tư</span></a>
+      <a href="mailto:lam.tran314159@gmail.com">Email</a>
+      <a href="https://instagram.com/hito.koe" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <span class="spacer"></span>
+    <small><span data-l="en">ひとこえ, “one voice”.</span><span data-l="vi">ひとこえ, “một tiếng gọi”.</span> © 2026 Lam Tran</small>
   </div>
 </footer>
 

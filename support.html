@@ -1,55 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-lang="en"
+  data-title-en="Hitokoe — Help"
+  data-title-vi="Hitokoe — Trợ giúp">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hitokoe — Support</title>
-<style>
-  body { margin:0; background:#F1E9D7; color:#211A0E;
-         font-family:-apple-system,'Segoe UI',Roboto,sans-serif; line-height:1.65; }
-  main { max-width:640px; margin:0 auto; padding:48px 24px 72px; }
-  h1 { font-size:28px; margin:0 0 4px; }
-  .jp { color:#6E6248; letter-spacing:4px; margin:0 0 32px; }
-  h2 { font-size:18px; margin:36px 0 8px; }
-  p, li { color:#453B26; font-size:15.5px; }
-  a { color:#A8332C; }
-  .card { background:#FFFCF3; border:1px solid #EBE1C9; border-radius:16px;
-          padding:18px 20px; margin:12px 0; }
-  footer { color:#A29574; font-size:12.5px; margin-top:48px; }
-</style>
+<title>Hitokoe — Help</title>
+<meta name="description" content="Help with Hitokoe: going back, coins, buying apps, adding someone, letters, backups and your data.">
+<meta name="theme-color" content="#E3D6BA">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="site.css">
+<script>
+  (function () {
+    var l;
+    try { l = localStorage.getItem('lang'); } catch (e) {}
+    var q = new URLSearchParams(location.search).get('lang');
+    if (q === 'en' || q === 'vi') l = q;
+    if (l !== 'en' && l !== 'vi') {
+      var ls = navigator.languages || [navigator.language || ''];
+      l = ls.some(function (x) { return /^vi\b/i.test(x); }) ? 'vi' : 'en';
+    }
+    document.documentElement.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+  })();
+</script>
+<script src="lang.js" defer></script>
 </head>
 <body>
-<main>
-  <h1>Hitokoe</h1>
-  <p class="jp">ひとこえ · support</p>
 
-  <p><strong>Hitokoe is an offline social notebook.</strong> People enter it only
-  one way: you meet in real life and bump your phones together. Everything stays
-  on your device — no account, no cloud.</p>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="mark" href="./"><img src="img/icon-64.png" alt="" width="34" height="34">Hitokoe</a>
+    <span class="spacer"></span>
+    <nav class="langs" aria-label="Language · Ngôn ngữ">
+      <button type="button" data-set="en" aria-pressed="true" lang="en">EN</button>
+      <button type="button" data-set="vi" aria-pressed="false" lang="vi">VI</button>
+    </nav>
+  </div>
+</header>
 
-  <h2>Frequently asked</h2>
-  <div class="card"><strong>Bump isn't connecting?</strong><br>
-  Both phones need Hitokoe open on the Bump screen, with Bluetooth and Wi-Fi on,
-  and the <em>Local Network</em> permission allowed (iOS Settings → Hitokoe).
-  Hold the phones close together.</div>
-  <div class="card"><strong>Where is my data?</strong><br>
-  Only on your phone. Use Settings → Back up to save a zip copy to Files or
-  iCloud Drive, and Restore to bring it back on a new phone.</div>
-  <div class="card"><strong>The Pulse can't find my friend?</strong><br>
-  Both of you must open the same meet up (same code) and be within Bluetooth
-  range (roughly the same venue). Keep the app in the foreground while finding.</div>
-  <div class="card"><strong>Delete my data?</strong><br>
-  Deleting the app deletes everything — nothing is stored anywhere else.</div>
+<main class="wrap page">
+  <h1><span data-l="en">Help</span><span data-l="vi">Trợ giúp</span></h1>
+  <p class="intro">
+    <span data-l="en">Hitokoe is a small phone inside your phone, worked with five keys: the four arrows and ひ. The glass doesn’t take touch.</span>
+    <span data-l="vi">Hitokoe là một chiếc điện thoại nhỏ trong điện thoại của bạn, dùng bằng năm phím: bốn phím mũi tên và ひ. Màn hình không nhận chạm.</span>
+  </p>
 
-  <h2>Contact</h2>
-  <p>Email <a href="mailto:lam.tran314159@gmail.com">lam.tran314159@gmail.com</a> —
-  we read everything.</p>
+  <section class="qa">
+    <h2><span data-l="en">How do I go back?</span><span data-l="vi">Quay lại thế nào?</span></h2>
+    <p>
+      <span data-l="en">Hold <kbd>◀</kbd>. It works on every page.</span>
+      <span data-l="vi">Giữ <kbd>◀</kbd>. Trang nào cũng vậy.</span>
+    </p>
+  </section>
 
-  <h2>Privacy</h2>
-  <p><a href="privacy.html">Privacy policy</a> — the short version: we collect
-  nothing.</p>
+  <section class="qa">
+    <h2><span data-l="en">How do I get coins?</span><span data-l="vi">Kiếm xu thế nào?</span></h2>
+    <p>
+      <span data-l="en">Finish a game for 10 coins, the first time each day for each game. Beat your personal best for 20. Some posts on the Board pay coins when you read them to the end. Coins can’t be bought.</span>
+      <span data-l="vi">Chơi xong một trò được 10 xu, lần đầu mỗi ngày cho mỗi trò. Phá PB được 20 xu. Vài bài trên Board trả xu khi bạn đọc hết. Xu không mua được bằng tiền.</span>
+    </p>
+  </section>
 
-  <footer>© 2026 Lam Tran · Hitokoe — nobody stays a stranger.</footer>
+  <section class="qa">
+    <h2><span data-l="en">Where do I get the Camera, the Pager or the Walkie-talkie?</span><span data-l="vi">Mua Máy ảnh, Máy nhắn tin, Bộ đàm ở đâu?</span></h2>
+    <p>
+      <span data-l="en">In the Bank, on its Shop tab. They cost coins, never money, and appear on Home once bought.</span>
+      <span data-l="vi">Trong Ngân hàng, ở thẻ Cửa hàng. Chúng có giá bằng xu, không bao giờ bằng tiền, và hiện trên màn hình chính khi đã mua.</span>
+    </p>
+  </section>
+
+  <section class="qa">
+    <h2><span data-l="en">How do I add someone?</span><span data-l="vi">Thêm người thế nào?</span></h2>
+    <p>
+      <span data-l="en">Both of you open Contacts › Add someone. One shows My code; the other picks Scan and points their Camera at it. Scanning needs the Camera from the Shop. Adding goes over the internet, so you don’t have to be in the same room — only able to scan the code.</span>
+      <span data-l="vi">Cả hai mở Danh bạ › Thêm người. Một người đưa Mã của bạn; người kia chọn Quét và đưa Máy ảnh vào mã. Muốn quét thì cần Máy ảnh mua ở Cửa hàng. Việc thêm người đi qua mạng, nên không cần ở cùng một chỗ — chỉ cần quét được mã.</span>
+    </p>
+  </section>
+
+  <section class="qa">
+    <h2><span data-l="en">Can I send messages?</span><span data-l="vi">Có nhắn tin được không?</span></h2>
+    <p>
+      <span data-l="en">Yes, with the Pager: letters made of little pictures, to people you’ve added. A letter is sealed on your phone and waits on our server, unreadable to us, until their phone collects it — for 30 days at most.</span>
+      <span data-l="vi">Có, bằng Máy nhắn tin: thư ghép từ hình nhỏ, gửi cho người bạn đã thêm. Thư được niêm phong ngay trên máy bạn và chờ trên máy chủ, chúng tôi không đọc được, cho tới khi máy kia nhận — lâu nhất 30 ngày.</span>
+    </p>
+  </section>
+
+  <section class="qa">
+    <h2><span data-l="en">How do I back up, or move to a new phone?</span><span data-l="vi">Sao lưu, hoặc chuyển sang máy mới thế nào?</span></h2>
+    <p>
+      <span data-l="en">Settings › Backup › Back up saves a file wherever you choose: the people you’ve added, your Album and your personal bests. Coins, the apps you bought and letters aren’t in it. On the new phone, open Settings › Backup › Restore and pick the file. The file isn’t encrypted, so keep it somewhere private.</span>
+      <span data-l="vi">Cài đặt › Sao lưu › Sao lưu lưu một tệp vào chỗ bạn chọn: những người bạn đã thêm, Album và các PB. Không gồm xu, app đã mua và thư. Trên máy mới, mở Cài đặt › Sao lưu › Khôi phục rồi chọn tệp. Tệp không được mã hoá, nên hãy cất ở chỗ riêng tư.</span>
+    </p>
+  </section>
+
+  <section class="qa">
+    <h2><span data-l="en">Does it work offline?</span><span data-l="vi">Không có mạng thì sao?</span></h2>
+    <p>
+      <span data-l="en">The games, the Camera, the Walkie-talkie, the Album and the Bank work without the internet. Adding someone, letters and new posts on the Board need it.</span>
+      <span data-l="vi">Trò chơi, Máy ảnh, Bộ đàm, Album và Ngân hàng chạy không cần mạng. Thêm người, gửi thư và bài mới trên Board thì cần.</span>
+    </p>
+  </section>
+
+  <section class="qa">
+    <h2><span data-l="en">How do I delete my data?</span><span data-l="vi">Xoá dữ liệu thế nào?</span></h2>
+    <p>
+      <span data-l="en">Remove a person in Contacts and their pictures go too. Delete the app to remove everything Hitokoe keeps on your phone. <a href="privacy.html">The privacy policy</a> says what passes through our server and for how long.</span>
+      <span data-l="vi">Xoá một người trong Danh bạ thì ảnh của họ cũng đi theo. Xoá app để xoá mọi thứ Hitokoe lưu trên máy. <a href="privacy.html">Chính sách quyền riêng tư</a> ghi rõ những gì đi qua máy chủ và lưu bao lâu.</span>
+    </p>
+  </section>
+
+  <section class="qa">
+    <h2><span data-l="en">Something else?</span><span data-l="vi">Còn câu hỏi khác?</span></h2>
+    <p>
+      <span data-l="en">Write to <a href="mailto:lam.tran314159@gmail.com">lam.tran314159@gmail.com</a> or to <a href="https://instagram.com/hito.koe" target="_blank" rel="noopener">@hito.koe</a> on Instagram.</span>
+      <span data-l="vi">Viết cho <a href="mailto:lam.tran314159@gmail.com">lam.tran314159@gmail.com</a> hoặc <a href="https://instagram.com/hito.koe" target="_blank" rel="noopener">@hito.koe</a> trên Instagram.</span>
+    </p>
+  </section>
 </main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a class="mark" href="./"><img src="img/icon-64.png" alt="" width="34" height="34">Hitokoe</a>
+    <nav aria-label="Hitokoe">
+      <a href="support.html"><span data-l="en">Help</span><span data-l="vi">Trợ giúp</span></a>
+      <a href="privacy.html"><span data-l="en">Privacy</span><span data-l="vi">Quyền riêng tư</span></a>
+      <a href="mailto:lam.tran314159@gmail.com">Email</a>
+      <a href="https://instagram.com/hito.koe" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <span class="spacer"></span>
+    <small><span data-l="en">ひとこえ, “one voice”.</span><span data-l="vi">ひとこえ, “một tiếng gọi”.</span> © 2026 Lam Tran</small>
+  </div>
+</footer>
+
 </body>
 </html>
