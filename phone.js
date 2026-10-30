@@ -18,9 +18,9 @@
         camera: 'Camera', pager: 'Pager', walkie: 'Walkie-talkie'
       },
       lines: {
-        contacts: 'Only people you’ve met: add someone with your code. Everyone is a five-digit number and a stitched face.',
+        contacts: 'Only people you’ve met: add someone with your code. Everyone is a five-digit number and a stitched face. Side by side, connect with the tin can.',
         album: 'What you keep: photos, videos, recordings, cloths — and every personal best, taped.',
-        settings: 'Language, volume, vibration, the lock and a backup.',
+        settings: 'Language, volume, vibration, the lock, a backup — and Sponsor.',
         bank: 'Every coin written in a book, savings that grow by the day — and the Shop.',
         games: 'Six games. Nothing moves until you do.',
         board: 'What Hitokoe posts — stories, news and the odd ad, the same for everyone.',
@@ -38,9 +38,9 @@
         camera: 'Máy ảnh', pager: 'Máy nhắn tin', walkie: 'Bộ đàm'
       },
       lines: {
-        contacts: 'Chỉ những người bạn đã gặp: thêm người bằng mã của bạn. Mỗi người là một số năm chữ số và một gương mặt thêu.',
+        contacts: 'Chỉ những người bạn đã gặp: thêm người bằng mã của bạn. Mỗi người là một số năm chữ số và một gương mặt thêu. Đứng cạnh nhau thì nối máy bằng ống bơ.',
         album: 'Những gì bạn giữ: ảnh, video, ghi âm, tấm vải — và mọi lần phá PB, quay lại sẵn.',
-        settings: 'Ngôn ngữ, âm lượng, rung, khoá và sao lưu.',
+        settings: 'Ngôn ngữ, âm lượng, rung, khoá, sao lưu — và Ủng hộ.',
         bank: 'Từng đồng xu ghi vào sổ, tiền tiết kiệm lớn dần theo ngày — và Cửa hàng.',
         games: 'Sáu trò chơi. Bạn chưa đi thì không gì nhúc nhích.',
         board: 'Những gì Hitokoe đăng — truyện, tin và thỉnh thoảng một quảng cáo, ai cũng thấy như nhau.',
