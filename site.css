@@ -189,6 +189,15 @@ h2 {
   letter-spacing: .01em; text-wrap: balance;
 }
 .part p { margin: 22px 0 0; max-width: 32em; }
+/* A part says itself in one line under its heading, the pictures the rest
+   (6 Nov: "nhìn text vẫn dài"); the heading sits level with the phones. */
+.part { align-items: center; }
+.part p.sub, .glass p.sub {
+  margin-top: 18px; max-width: 22em;
+  font-size: 20px; line-height: 1.5; color: var(--quiet);
+  text-wrap: balance;
+}
+.sub kbd { font-size: 16px; vertical-align: 1px; }
 .phones { list-style: none; margin: 0; padding: 0; display: flex; gap: 24px; }
 .phones li { flex: 1 1 0; min-width: 0; max-width: 220px; }
 .phones figure { margin: 0; }
