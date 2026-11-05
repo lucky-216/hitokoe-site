@@ -18,12 +18,12 @@
         camera: 'Camera', pager: 'Pager', walkie: 'Walkie-talkie'
       },
       lines: {
-        contacts: 'Only people you’ve met: add someone with your code. Everyone is a five-digit number and a stitched face. Side by side, connect with the tin can.',
+        contacts: 'Only people you’ve met: add someone with your code. Everyone is a five-digit number and a stitched face. Side by side, connect with the tin can — then write, or challenge each other.',
         album: 'What you keep: photos, videos, recordings, cloths — and every personal best, taped.',
-        settings: 'Language, volume, vibration, the lock, a backup — and Sponsor.',
+        settings: 'Language, volume, music, vibration, the lock, a backup — and Sponsor.',
         bank: 'Every coin written in a book, savings that grow by the day — and the Shop.',
-        games: 'Six games. Nothing moves until you do.',
-        board: 'What Hitokoe posts — stories, news and the odd ad, the same for everyone.',
+        games: 'Six games, each with How to play. Nothing moves until you do.',
+        board: 'Hitokoe’s own posts and ads, the same for everyone.',
         camera: 'Photos and video, with a cat if you like. Bought with coins.',
         pager: 'Letters made of little pictures, sealed so only the two of you can read them.',
         walkie: 'Hold to record, let go to pause, then keep the tape or let it go.'
@@ -38,12 +38,12 @@
         camera: 'Máy ảnh', pager: 'Máy nhắn tin', walkie: 'Bộ đàm'
       },
       lines: {
-        contacts: 'Chỉ những người bạn đã gặp: thêm người bằng mã của bạn. Mỗi người là một số năm chữ số và một gương mặt thêu. Đứng cạnh nhau thì nối máy bằng ống bơ.',
+        contacts: 'Chỉ những người bạn đã gặp: thêm người bằng mã của bạn. Mỗi người là một số năm chữ số và một gương mặt thêu. Đứng cạnh nhau thì nối máy bằng ống bơ — rồi viết thư, hoặc thách đấu nhau.',
         album: 'Những gì bạn giữ: ảnh, video, ghi âm, tấm vải — và mọi lần phá PB, quay lại sẵn.',
-        settings: 'Ngôn ngữ, âm lượng, rung, khoá, sao lưu — và Ủng hộ.',
+        settings: 'Ngôn ngữ, âm lượng, nhạc, rung, khoá, sao lưu — và Ủng hộ.',
         bank: 'Từng đồng xu ghi vào sổ, tiền tiết kiệm lớn dần theo ngày — và Cửa hàng.',
-        games: 'Sáu trò chơi. Bạn chưa đi thì không gì nhúc nhích.',
-        board: 'Những gì Hitokoe đăng — truyện, tin và thỉnh thoảng một quảng cáo, ai cũng thấy như nhau.',
+        games: 'Sáu trò chơi, trò nào cũng có Hướng dẫn. Bạn chưa đi thì không gì nhúc nhích.',
+        board: 'Bài và quảng cáo của chính Hitokoe, ai cũng thấy như nhau.',
         camera: 'Ảnh và video, thêm mèo nếu thích. Mua bằng xu.',
         pager: 'Thư ghép từ hình nhỏ, niêm phong nên chỉ hai người đọc được.',
         walkie: 'Giữ để ghi, thả để tạm dừng, rồi giữ cuộn băng hoặc bỏ đi.'
